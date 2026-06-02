@@ -9,10 +9,12 @@ import { Faq } from "@/components/landing/Faq";
 import { CTA } from "@/components/landing/CTA";
 import { ChatWidget } from "@/components/landing/ChatWidget";
 import { Footer } from "@/components/landing/Footer";
+import { Preloader } from "@/components/ui/Preloader";
 
 export default function Landing() {
   return (
     <div className="theme-jennifer min-h-screen bg-background relative overflow-x-hidden">
+      <Preloader />
       <Navbar />
       <Hero />
       <PainPoints />
