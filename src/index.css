@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 96%; /* Cream #F9F6F1 */
+    --foreground: 60 5% 11%;  /* Charcoal #1E1E1C */
+
+    --card: 0 0% 100%;
+    --card-foreground: 60 5% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 60 5% 11%;
+
+    --primary: 131 16% 55%; /* Sage #7A9E82 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 131 20% 93%; /* Light Sage #EAF0EB */
+    --secondary-foreground: 140 24% 31%; /* Dark Sage */
+
+    --muted: 60 5% 90%;
+    --muted-foreground: 60 2% 35%; /* Mid #5A5A57 */
+
+    --accent: 24 48% 48%; /* Amber #B87040 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 60 5% 85%;
+    --input: 60 5% 85%;
+    --ring: 131 16% 55%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 60 5% 11%; /* Charcoal #1E1E1C */
+    --foreground: 36 33% 96%; /* Cream #F9F6F1 */
+
+    --card: 60 5% 15%;
+    --card-foreground: 36 33% 96%;
+
+    --popover: 60 5% 15%;
+    --popover-foreground: 36 33% 96%;
+
+    --primary: 131 16% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 140 24% 31%;
+    --secondary-foreground: 131 20% 93%;
+
+    --muted: 60 5% 20%;
+    --muted-foreground: 60 5% 70%;
+
+    --accent: 24 48% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 36 33% 96%;
+
+    --border: 60 5% 25%;
+    --input: 60 5% 25%;
+    --ring: 131 16% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+/* Jennifer Rankin Theme Customizations */
+.theme-jennifer {
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.theme-jennifer h1,
+.theme-jennifer h2,
+.theme-jennifer h3,
+.theme-jennifer h4,
+.theme-jennifer h5,
+.theme-jennifer h6 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.bg-glass-jennifer {
+  background-color: rgba(249, 246, 241, 0.85); /* Cream with opacity */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.shadow-jennifer-soft {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-jennifer-glow {
+  box-shadow: 0 0 40px -10px rgba(122, 158, 130, 0.2); /* Sage glow */
+}
+
+/* Buttons */
+.btn-jennifer-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-medium text-white transition-all hover:bg-[#688a6f] hover:shadow-jennifer-glow focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+}
+
+.btn-jennifer-secondary {
+  @apply inline-flex items-center justify-center rounded-full border border-primary/20 bg-transparent px-8 py-3 text-sm font-medium text-primary transition-all hover:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+}
+
+/* Animations */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
