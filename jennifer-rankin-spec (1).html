@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jennifer Rankin Therapy — Website Spec</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --sage: #7A9E82;
+  --sage-light: #EAF0EB;
+  --sage-dark: #3D6147;
+  --cream: #F9F6F1;
+  --warm-white: #FFFFFF;
+  --charcoal: #1E1E1C;
+  --mid: #5A5A57;
+  --light: #C8C6BE;
+  --accent: #B87040;
+  --accent-light: #F5EAE0;
+  --border: rgba(30,30,28,0.08);
+  --border-strong: rgba(30,30,28,0.18);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.65;
+  font-size: 15px;
+}
+
+/* ---- HEADER ---- */
+.header {
+  background: var(--charcoal);
+  color: white;
+  padding: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.header-orb1 {
+  position: absolute; top: -80px; right: -80px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: var(--sage-dark); opacity: 0.25;
+}
+.header-orb2 {
+  position: absolute; bottom: -60px; left: 38%;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: var(--accent); opacity: 0.12;
+}
+.header-inner { position: relative; z-index: 1; max-width: 900px; }
+.tag {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--sage); font-weight: 500; margin-bottom: 1rem;
+}
+.header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.4rem; font-weight: 300; line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.header h1 em { font-style: italic; color: var(--sage); }
+.header-sub {
+  font-size: 14px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.7;
+  margin-top: 0.75rem;
+}
+.meta-row {
+  display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap;
+}
+.meta-item .ml { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
+.meta-item .mv { font-size: 13px; color: white; font-weight: 500; }
+
+/* ---- NAV ---- */
+.toc-bar {
+  background: white; border-bottom: 1px solid var(--border);
+  padding: 0 4rem; display: flex; gap: 0; overflow-x: auto;
+  position: sticky; top: 0; z-index: 100;
+}
+.toc-bar a {
+  font-size: 12px; font-weight: 500; color: var(--mid);
+  text-decoration: none; padding: 1rem 1.25rem; white-space: nowrap;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.toc-bar a:hover { color: var(--charcoal); border-bottom-color: var(--sage); }
+
+/* ---- SECTIONS ---- */
+.section {
+  max-width: 960px; margin: 0 auto; padding: 4rem;
+}
+.section + .section { border-top: 1px solid var(--border); }
+.section-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--sage); font-weight: 500; margin-bottom: 0.6rem;
+}
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem;
+}
+.section h3 {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--mid);
+  margin: 2rem 0 0.75rem;
+}
+
+/* ---- CARDS ---- */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+.card {
+  background: white; border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem;
+}
+.card-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--sage-light); display: flex; align-items: center; justify-content: center;
+  font-size: 16px; margin-bottom: 1rem;
+}
+.card-icon.amber { background: var(--accent-light); }
+.card h4 { font-size: 14px; font-weight: 500; margin-bottom: 0.4rem; }
+.card p { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+/* ---- PAGE SECTION BLOCKS ---- */
+.page-block {
+  background: white; border: 1px solid var(--border);
+  border-radius: 14px; margin-bottom: 1.25rem; overflow: hidden;
+}
+.page-block-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+  cursor: pointer; user-select: none;
+}
+.page-block-header:hover { background: var(--cream); }
+.block-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--charcoal); color: white;
+  font-size: 12px; font-weight: 500;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.block-num.sage { background: var(--sage); }
+.block-num.accent { background: var(--accent); }
+.block-title { font-size: 14px; font-weight: 500; flex: 1; }
+.block-subtitle { font-size: 12px; color: var(--mid); }
+.chevron { font-size: 18px; color: var(--light); transition: transform 0.25s; }
+.chevron.open { transform: rotate(180deg); }
+.page-block-body { padding: 1.5rem; display: none; }
+.page-block-body.open { display: block; }
+
+.hormozi-pill {
+  display: inline-block; font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 500;
+  background: #FFF3E8; color: var(--accent);
+  padding: 3px 10px; border-radius: 20px; margin-left: 8px;
+}
+.principle {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+}
+.principle:last-child { border-bottom: none; }
+.principle-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sage); margin-top: 8px; flex-shrink: 0;
+}
+.principle-dot.accent { background: var(--accent); }
+.principle-text { font-size: 13px; line-height: 1.6; }
+.principle-text strong { font-weight: 500; color: var(--charcoal); }
+.principle-text span { color: var(--mid); }
+
+/* ---- TECH STACK ---- */
+.tech-row {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+}
+.tech-row:last-child { border-bottom: none; }
+.tech-badge {
+  font-size: 11px; font-weight: 500; padding: 3px 10px;
+  border-radius: 20px; background: var(--sage-light);
+  color: var(--sage-dark); white-space: nowrap;
+}
+.tech-badge.blue { background: #E6F1FB; color: #185FA5; }
+.tech-badge.amber { background: var(--accent-light); color: var(--accent); }
+.tech-name { font-size: 13px; font-weight: 500; flex: 1; }
+.tech-desc { font-size: 12px; color: var(--mid); }
+
+/* ---- AI MODULE ---- */
+.ai-flow {
+  display: flex; flex-direction: column; gap: 0;
+}
+.ai-step {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  padding: 1rem 0;
+}
+.ai-step-line {
+  display: flex; flex-direction: column; align-items: center; flex-shrink: 0;
+}
+.ai-step-circle {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid var(--sage); color: var(--sage-dark);
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  background: white;
+}
+.ai-step-connector {
+  width: 2px; height: 32px; background: var(--border); margin: 4px 0;
+}
+.ai-step:last-child .ai-step-connector { display: none; }
+.ai-step-content { padding-top: 6px; }
+.ai-step-content h5 { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+.ai-step-content p { font-size: 12px; color: var(--mid); }
+
+/* ---- TIMELINE ---- */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: flex; gap: 1.5rem; align-items: flex-start; padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-week {
+  min-width: 80px; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--sage-dark); padding-top: 2px;
+}
+.timeline-content h5 { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+.timeline-content p { font-size: 12px; color: var(--mid); }
+
+/* ---- MOCKUP PREVIEW ---- */
+.mockup-frame {
+  background: var(--charcoal); border-radius: 12px;
+  overflow: hidden; border: 1px solid var(--border-strong);
+  margin: 1.5rem 0;
+}
+.mockup-bar {
+  background: rgba(255,255,255,0.06); padding: 10px 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mockup-url {
+  flex: 1; background: rgba(255,255,255,0.08);
+  border-radius: 4px; padding: 4px 12px;
+  font-size: 11px; color: rgba(255,255,255,0.4); font-family: monospace;
+  margin: 0 12px;
+}
+.mockup-body { padding: 2rem; color: white; }
+.mockup-hero-tag {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sage); font-weight: 500; margin-bottom: 0.75rem;
+}
+.mockup-hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300; line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.mockup-hero-h1 em { font-style: italic; color: var(--sage); }
+.mockup-hero-p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; max-width: 440px; }
+.mockup-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.mockup-cta {
+  background: var(--sage); color: white;
+  font-size: 13px; font-weight: 500;
+  padding: 10px 22px; border-radius: 6px;
+}
+.mockup-cta-ghost {
+  border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);
+  font-size: 13px; padding: 10px 22px; border-radius: 6px;
+}
+.mockup-trust {
+  display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap;
+}
+.trust-item { font-size: 11px; color: rgba(255,255,255,0.4); }
+.trust-item strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* ---- CHATBOT PREVIEW ---- */
+.chat-frame {
+  background: white; border-radius: 12px; border: 1px solid var(--border);
+  max-width: 420px; overflow: hidden;
+}
+.chat-header {
+  background: var(--sage-dark); color: white; padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.chat-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--sage); display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 600;
+}
+.chat-header-text h5 { font-size: 13px; font-weight: 500; }
+.chat-header-text p { font-size: 11px; opacity: 0.7; }
+.online-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; margin-left: auto; }
+.chat-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; background: var(--cream); }
+.chat-msg { max-width: 80%; padding: 0.6rem 0.9rem; border-radius: 10px; font-size: 12px; line-height: 1.5; }
+.chat-msg.bot { background: white; border: 1px solid var(--border); align-self: flex-start; color: var(--charcoal); border-radius: 2px 10px 10px 10px; }
+.chat-msg.user { background: var(--sage); color: white; align-self: flex-end; border-radius: 10px 2px 10px 10px; }
+.chat-options { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 1rem 1rem; background: var(--cream); }
+.chat-option {
+  font-size: 11px; padding: 5px 12px; border-radius: 20px;
+  border: 1px solid var(--sage); color: var(--sage-dark); background: white;
+  cursor: pointer;
+}
+.chat-input-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0.75rem 1rem; border-top: 1px solid var(--border); background: white;
+}
+.chat-input { flex: 1; font-size: 12px; color: var(--mid); }
+.chat-send {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--sage); display: flex; align-items: center; justify-content: center;
+}
+
+/* ---- TESTIMONIAL ---- */
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.testimonial {
+  background: white; border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.5rem;
+}
+.stars { color: #F59E0B; font-size: 13px; margin-bottom: 0.75rem; }
+.testimonial p { font-size: 13px; color: var(--mid); line-height: 1.65; margin-bottom: 1rem; font-style: italic; }
+.testimonial-author { font-size: 12px; font-weight: 500; color: var(--charcoal); }
+.testimonial-detail { font-size: 11px; color: var(--light); }
+
+/* ---- STATUS CHIPS ---- */
+.status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.75rem; }
+.chip {
+  font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px;
+}
+.chip.green { background: #EAF3DE; color: #3B6D11; }
+.chip.amber { background: #FAEEDA; color: #854F0B; }
+.chip.blue { background: #E6F1FB; color: #185FA5; }
+
+/* ---- FOOTER ---- */
+.spec-footer {
+  background: var(--charcoal); color: rgba(255,255,255,0.4);
+  text-align: center; padding: 2rem; font-size: 12px; margin-top: 4rem;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-orb1"></div>
+  <div class="header-orb2"></div>
+  <div class="header-inner">
+    <div class="tag">Website Product Spec · v1.0</div>
+    <h1>Jennifer Rankin, <em>LMFT</em><br>Website &amp; AI Booking System</h1>
+    <p class="header-sub">A conversion-focused therapy website built on Hormozi landing page principles, a no-code template base, and an AI chatbot layer for automated intake &amp; scheduling.</p>
+    <div class="meta-row">
+      <div class="meta-item"><div class="ml">Client</div><div class="mv">Jennifer Rankin</div></div>
+      <div class="meta-item"><div class="ml">Type</div><div class="mv">Therapist Website</div></div>
+      <div class="meta-item"><div class="ml">Approach</div><div class="mv">Template + AI Layer</div></div>
+      <div class="meta-item"><div class="ml">LP Framework</div><div class="mv">Alex Hormozi Principles</div></div>
+      <div class="meta-item"><div class="ml">Est. Timeline</div><div class="mv">3–4 Weeks</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="toc-bar">
+  <a href="#goals">Goals</a>
+  <a href="#landing">Landing Page</a>
+  <a href="#pages">All Pages</a>
+  <a href="#chatbot">AI Chatbot</a>
+  <a href="#booking">Booking</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#tech">Tech Stack</a>
+  <a href="#timeline">Timeline</a>
+</div>
+
+<!-- SECTION: GOALS -->
+<div class="section" id="goals">
+  <div class="section-label">01 — Overview</div>
+  <h2>Project Goals</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h4>Convert Visitors to Clients</h4>
+      <p>Every section of the site is engineered to reduce friction and drive appointment bookings — not just look pretty.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">🤖</div>
+      <h4>AI-Powered Intake & Booking</h4>
+      <p>A 24/7 chatbot handles initial questions, qualifies leads, and books appointments directly into Jennifer's calendar.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <h4>Premium Feel, Fast Launch</h4>
+      <p>Template-based build (Webflow or Squarespace) with custom styling so it looks high-end but ships in weeks.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📣</div>
+      <h4>Trust at Every Turn</h4>
+      <p>Testimonials, credentials, and outcome-focused copy eliminate doubt before a visitor even scrolls halfway.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: LANDING PAGE -->
+<div class="section" id="landing">
+  <div class="section-label">02 — Landing Page</div>
+  <h2>Hormozi-Style Landing Page Spec</h2>
+  <p style="color:var(--mid); margin-bottom:2rem; max-width:640px;">Alex Hormozi's framework flips the typical therapy website: lead with the transformation, not the credentials. Every block below follows a specific conversion principle.</p>
+
+  <!-- Hero mockup -->
+  <div class="mockup-frame">
+    <div class="mockup-bar">
+      <div class="mockup-dot" style="background:#FF5F57"></div>
+      <div class="mockup-dot" style="background:#FEBC2E"></div>
+      <div class="mockup-dot" style="background:#28C840"></div>
+      <div class="mockup-url">jenniferrankin.com</div>
+    </div>
+    <div class="mockup-body">
+      <div class="mockup-hero-tag">Licensed Marriage & Family Therapist · Orange County, CA</div>
+      <div class="mockup-hero-h1">Finally feel like <em>yourself</em> again —<br>without years of talking in circles.</div>
+      <div class="mockup-hero-p">Jennifer helps high-achieving adults overcome anxiety, relationship stress, and burnout in a focused, results-driven process. Most clients feel a real shift within 6 sessions.</div>
+      <div class="mockup-cta-row">
+        <div class="mockup-cta">Book a Free 15-Min Call →</div>
+        <div class="mockup-cta-ghost">See How It Works</div>
+      </div>
+      <div class="mockup-trust">
+        <div class="trust-item"><strong>200+</strong> clients helped</div>
+        <div class="trust-item"><strong>★ 4.9</strong> avg rating</div>
+        <div class="trust-item"><strong>In-person + Telehealth</strong> available</div>
+        <div class="trust-item"><strong>Most insurance</strong> accepted</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Section-by-Section Blueprint</h3>
+
+  <!-- Block 1 -->
+  <div class="page-block">
+    <div class="page-block-header" onclick="toggle(this)">
+      <div class="block-num">1</div>
+      <div>
+        <div class="block-title">Hero Section <span class="hormozi-pill">Hormozi: Lead with Outcome</span></div>
+        <div class="block-subtitle">The transformation promise — not the bio</div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="page-block-body">
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Headline</strong> <span>— speak to the pain + desired outcome. "Finally feel like yourself again" beats "Compassionate therapy for your journey."</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Subheadline</strong> <span>— who she helps + how long it takes. Specificity builds credibility. "Most clients feel a real shift within 6 sessions."</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Primary CTA</strong> <span>— "Book a Free 15-Min Call." Low commitment, high value. Hormozi: make the first step near-zero friction.</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Trust bar</strong> <span>— 4 data points: client count, rating, modalities, insurance. This sits under the CTA to pre-handle objections immediately.</span></div></div>
+      <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>No photo yet</strong> <span>— Hormozi: don't front-load credentials. A photo of Jennifer should come after the outcome promise is established.</span></div></div>
+    </div>
+  </div>
+
+  <!-- Block 2 -->
+  <div class="page-block">
+    <div class="page-block-header" onclick="toggle(this)">
+      <div class="block-num sage">2</div>
+      <div>
+        <div class="block-title">Problem Agitation Block <span class="hormozi-pill">Hormozi: Identify the Pain</span></div>
+        <div class="block-subtitle">Make the visitor feel seen before offering a solution</div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="page-block-body">
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Header</strong> <span>— "Sound familiar?" or "Does any of this feel like you?"</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>3–4 bullet pain points</strong> <span>— written in the client's words, not clinical language. E.g., "You wake up already exhausted before the day starts." "You snap at people you love and don't know why."</span></div></div>
+      <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Hormozi rule</strong> <span>— name the external problem, internal emotion, and philosophical frustration. That's what makes copy resonate deeply.</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Transition line</strong> <span>— "It doesn't have to stay this way." Bridges pain to solution without being dismissive.</span></div></div>
+    </div>
+  </div>
+
+  <!-- Block 3 -->
+  <div class="page-block">
+    <div class="page-block-header" onclick="toggle(this)">
+      <div class="block-num accent">3</div>
+      <div>
+        <div class="block-title">The Method / How It Works <span class="hormozi-pill">Hormozi: The Vehicle</span></div>
+        <div class="block-subtitle">Show the path to the transformation</div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="page-block-body">
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>3-step visual process</strong> <span>— Step 1: Free Discovery Call → Step 2: Personalized Plan → Step 3: Real Progress. Simple, not clinical.</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Unique Mechanism</strong> <span>— name Jennifer's approach. E.g., "The Clarity Method" — a brief proprietary-sounding name for her therapy approach makes her stand out from generic therapists.</span></div></div>
+      <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Hormozi: the vehicle must feel new</strong> <span>— even if it's standard CBT, how Jennifer frames it should feel tailored and specific to the niche she serves.</span></div></div>
+    </div>
+  </div>
+
+  <!-- Block 4 -->
+  <div class="page-block">
+    <div class="page-block-header" onclick="toggle(this)">
+      <div class="block-num">4</div>
+      <div>
+        <div class="block-title">Social Proof / Testimonials <span class="hormozi-pill">Hormozi: Proof Stack</span></div>
+        <div class="block-subtitle">Earned credibility beats stated credibility</div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="page-block-body">
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Lead with outcomes</strong> <span>— testimonials should describe the before/after, not just "Jennifer is great." "I went from panic attacks 3x a week to sleeping through the night." is gold.</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Minimum 4–6 testimonials</strong> <span>— with first name + therapy type (e.g., "Anxiety, OC") for specificity. Real = credible.</span></div></div>
+      <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Video testimonial</strong> <span>— even one 30-second video clip outperforms 10 text quotes. Prioritize getting at least one.</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Star rating display</strong> <span>— pull from Psychology Today, Google, or Yelp. Show the platform logo + count.</span></div></div>
+    </div>
+  </div>
+
+  <!-- Block 5 -->
+  <div class="page-block">
+    <div class="page-block-header" onclick="toggle(this)">
+      <div class="block-num sage">5</div>
+      <div>
+        <div class="block-title">Objection Handling / FAQ <span class="hormozi-pill">Hormozi: Pre-handle Doubt</span></div>
+        <div class="block-subtitle">Answer "but what about…" before they leave</div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="page-block-body">
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Insurance?</strong> <span>— "Yes, I accept [X, Y, Z] plans. For others, I provide superbills for reimbursement."</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>In-person or telehealth?</strong> <span>— "Both. You choose what works best for you each session."</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>How long will therapy take?</strong> <span>— "Most clients see meaningful change in 8–12 sessions. We'll set a clear plan on our first call."</span></div></div>
+      <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Hormozi rule</strong> <span>— every FAQ answer should end with a micro-CTA or a confidence-builder. Don't just answer — close.</span></div></div>
+    </div>
+  </div>
+
+  <!-- Block 6 -->
+  <div class="page-block">
+    <div class="page-block-header" onclick="toggle(this)">
+      <div class="block-num accent">6</div>
+      <div>
+        <div class="block-title">Final CTA Section <span class="hormozi-pill">Hormozi: The Close</span></div>
+        <div class="block-subtitle">One last reason to act now</div>
+      </div>
+      <div class="chevron">›</div>
+    </div>
+    <div class="page-block-body">
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Restate the transformation</strong> <span>— "You deserve to feel good in your own mind. That starts with one 15-minute call."</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Scarcity / urgency</strong> <span>— "Jennifer currently has [X] openings this month." — real scarcity, never fake.</span></div></div>
+      <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Risk reversal</strong> <span>— "The discovery call is completely free. No obligation, no pressure." Eliminate the last reason not to click.</span></div></div>
+      <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Single button</strong> <span>— "Book My Free Call →" Only one action. No distractions.</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: ALL PAGES -->
+<div class="section" id="pages">
+  <div class="section-label">03 — Site Architecture</div>
+  <h2>All Pages</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🏠</div>
+      <h4>Home (Landing Page)</h4>
+      <p>The Hormozi-built conversion page. All sections detailed above.</p>
+      <div class="status-row"><span class="chip green">Core Page</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">👩‍⚕️</div>
+      <h4>About Jennifer</h4>
+      <p>Her story, training, philosophy, credentials. Humanize her. Photo here. Make it personal.</p>
+      <div class="status-row"><span class="chip green">Core Page</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <h4>Services</h4>
+      <p>Individual therapy, couples, anxiety, trauma, etc. Each with its own mini-CTA.</p>
+      <div class="status-row"><span class="chip green">Core Page</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">📅</div>
+      <h4>Book a Session</h4>
+      <p>Embedded calendar (Calendly or SimplePractice). Minimal friction. Full-page focus.</p>
+      <div class="status-row"><span class="chip green">Core Page</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📞</div>
+      <h4>Contact</h4>
+      <p>Form + phone + AI chatbot widget. Insurance info + office address if in-person.</p>
+      <div class="status-row"><span class="chip blue">Supporting</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📝</div>
+      <h4>Blog / Resources</h4>
+      <p>Optional. SEO play for long-term organic leads. Can add post-launch.</p>
+      <div class="status-row"><span class="chip amber">Phase 2</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: CHATBOT -->
+<div class="section" id="chatbot">
+  <div class="section-label">04 — AI Module</div>
+  <h2>AI Chatbot Spec</h2>
+  <p style="color:var(--mid); margin-bottom:2rem; max-width:640px;">A floating chat widget powered by an AI layer (GPT-4 or Claude). Handles FAQs, qualifies leads, and books appointments — 24/7 without Jennifer lifting a finger.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+    <div>
+      <h3>Chatbot Flow</h3>
+      <div class="ai-flow">
+        <div class="ai-step">
+          <div class="ai-step-line">
+            <div class="ai-step-circle">1</div>
+            <div class="ai-step-connector"></div>
+          </div>
+          <div class="ai-step-content">
+            <h5>Greeting + Soft Qualifier</h5>
+            <p>"Hi, I'm here to help you connect with Jennifer. Are you looking for support with anxiety, relationships, or something else?"</p>
+          </div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-line">
+            <div class="ai-step-circle">2</div>
+            <div class="ai-step-connector"></div>
+          </div>
+          <div class="ai-step-content">
+            <h5>FAQ Handling</h5>
+            <p>Answers common questions about insurance, session format, rates, and availability from a knowledge base.</p>
+          </div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-line">
+            <div class="ai-step-circle">3</div>
+            <div class="ai-step-connector"></div>
+          </div>
+          <div class="ai-step-content">
+            <h5>Warm Handoff to Booking</h5>
+            <p>"It sounds like Jennifer would be a great fit. Want me to show you her next available slots?"</p>
+          </div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-line">
+            <div class="ai-step-circle">4</div>
+            <div class="ai-step-connector"></div>
+          </div>
+          <div class="ai-step-content">
+            <h5>Calendar Embed or Link</h5>
+            <p>Pushes visitor directly to Calendly / SimplePractice booking within the chat or opens a modal.</p>
+          </div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-line">
+            <div class="ai-step-circle">5</div>
+          </div>
+          <div class="ai-step-content">
+            <h5>Lead Capture Fallback</h5>
+            <p>If no booking happens, collects name + email + concern. Sends to Jennifer's CRM or email via Zapier.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Live Preview</h3>
+      <div class="chat-frame">
+        <div class="chat-header">
+          <div class="chat-avatar">JR</div>
+          <div class="chat-header-text">
+            <h5>Jennifer's Assistant</h5>
+            <p>Usually replies instantly</p>
+          </div>
+          <div class="online-dot"></div>
+        </div>
+        <div class="chat-body">
+          <div class="chat-msg bot">Hi! 👋 I'm Jennifer's virtual assistant. What brings you here today?</div>
+          <div class="chat-msg user">I've been struggling with anxiety and work stress.</div>
+          <div class="chat-msg bot">I hear you — that combination is really tough. Jennifer specializes in exactly this. She has telehealth and in-person options. Would you like to see her available times this week?</div>
+        </div>
+        <div class="chat-options">
+          <div class="chat-option">Yes, show me times</div>
+          <div class="chat-option">What's the cost?</div>
+          <div class="chat-option">Tell me more</div>
+        </div>
+        <div class="chat-input-row">
+          <div class="chat-input">Type a message…</div>
+          <div class="chat-send">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;">
+        <h3>AI Guardrails</h3>
+        <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Never give therapy or clinical advice</strong> <span>— the bot is a scheduling and FAQ agent only.</span></div></div>
+        <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Crisis redirect</strong> <span>— if distress keywords appear, immediately show the 988 Suicide & Crisis Lifeline.</span></div></div>
+        <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Tone</strong> <span>— warm, unhurried, empathetic. No robotic phrases.</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: BOOKING -->
+<div class="section" id="booking">
+  <div class="section-label">05 — Booking System</div>
+  <h2>Appointment Booking</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h4>Recommended: SimplePractice</h4>
+      <p>Purpose-built for therapists. Handles intake forms, billing, telehealth, HIPAA compliance, and calendar sync. Best all-in-one.</p>
+      <div class="status-row"><span class="chip green">Recommended</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon amber">🔗</div>
+      <h4>Alternative: Calendly + Typeform</h4>
+      <p>Calendly for scheduling, Typeform for intake. Cheaper to start, but two tools to manage. Good for MVP phase.</p>
+      <div class="status-row"><span class="chip amber">Budget Option</span></div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h4>Zapier Automation</h4>
+      <p>On new booking: send confirmation email, add to CRM, notify Jennifer via Slack or SMS. Zero manual work.</p>
+      <div class="status-row"><span class="chip blue">Automation Layer</span></div>
+    </div>
+  </div>
+  <h3>Booking Flow</h3>
+  <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Step 1</strong> <span>— Visitor clicks CTA → Taken to /book page with embedded calendar widget.</span></div></div>
+  <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Step 2</strong> <span>— Selects date + time → Fills short intake form (name, concern, insurance).</span></div></div>
+  <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Step 3</strong> <span>— Confirmation email sent automatically with Zoom/address link and intake paperwork.</span></div></div>
+  <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Step 4 (Automation)</strong> <span>— Zapier notifies Jennifer, adds client to her CRM, and sends a reminder 24h before the session.</span></div></div>
+</div>
+
+<!-- SECTION: TESTIMONIALS -->
+<div class="section" id="testimonials">
+  <div class="section-label">06 — Social Proof</div>
+  <h2>Testimonials</h2>
+  <p style="color:var(--mid); margin-bottom:1.5rem; max-width:600px;">Below is the design layout for testimonials. Jennifer should collect these via a follow-up email after positive sessions — outcome-focused quotes only.</p>
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"I came in barely able to get through a workday without a panic attack. After 8 sessions I actually feel in control again. Jennifer doesn't waste a single minute."</p>
+      <div class="testimonial-author">Sarah M.</div>
+      <div class="testimonial-detail">Anxiety · Irvine, CA</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"My husband and I were heading toward separation. Jennifer helped us rebuild communication in a way that actually stuck. We're in a completely different place now."</p>
+      <div class="testimonial-author">David & Anna K.</div>
+      <div class="testimonial-detail">Couples Therapy · Newport Beach</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"I've tried therapy before and it felt like talking into a void. Jennifer actually gives you tools. I noticed a difference by session three — I'm not exaggerating."</p>
+      <div class="testimonial-author">Marcus T.</div>
+      <div class="testimonial-detail">Burnout & Depression · Remote</div>
+    </div>
+  </div>
+  <h3>Testimonial Collection Strategy</h3>
+  <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>After session 6</strong> <span>— send a simple email: "Would you be willing to share what's changed for you? Even 2–3 sentences helps others find the help they need."</span></div></div>
+  <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Google Reviews</strong> <span>— direct link in the email. Google reviews improve local SEO significantly.</span></div></div>
+  <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>Video testimonials</strong> <span>— offer a small gesture (e.g., a free resource or session discount) for willing clients who consent to a 30-second video clip.</span></div></div>
+</div>
+
+<!-- SECTION: TECH STACK -->
+<div class="section" id="tech">
+  <div class="section-label">07 — Technology</div>
+  <h2>Recommended Tech Stack</h2>
+
+  <h3>Website Platform</h3>
+  <div class="tech-row"><div class="tech-badge">Primary</div><div class="tech-name">Webflow</div><div class="tech-desc">Best visual quality + CMS for blog. Slight learning curve but produces premium results.</div></div>
+  <div class="tech-row"><div class="tech-badge blue">Alt</div><div class="tech-name">Squarespace</div><div class="tech-desc">Easier for Jennifer to manage herself post-launch. Slightly less design flexibility.</div></div>
+
+  <h3>Booking & Practice Management</h3>
+  <div class="tech-row"><div class="tech-badge">Recommended</div><div class="tech-name">SimplePractice</div><div class="tech-desc">HIPAA-compliant, telehealth, billing, intake forms. ~$79/month.</div></div>
+  <div class="tech-row"><div class="tech-badge blue">Alt</div><div class="tech-name">Calendly + Typeform</div><div class="tech-desc">Lower cost MVP option. Add HIPAA Business Associate Agreement for Calendly.</div></div>
+
+  <h3>AI Chatbot</h3>
+  <div class="tech-row"><div class="tech-badge amber">Build Option</div><div class="tech-name">Custom GPT-4 / Claude Bot</div><div class="tech-desc">Fully custom persona, knowledge base, and booking handoff. Best experience. Requires dev work.</div></div>
+  <div class="tech-row"><div class="tech-badge blue">No-Code Option</div><div class="tech-name">Tidio or Intercom</div><div class="tech-desc">Pre-built chatbot platforms with AI. Embed on any site. Faster to launch, less custom.</div></div>
+
+  <h3>Automation</h3>
+  <div class="tech-row"><div class="tech-badge">Glue Layer</div><div class="tech-name">Zapier</div><div class="tech-desc">Booking → email, CRM, calendar, Slack notifications. No code required.</div></div>
+
+  <h3>Email & CRM</h3>
+  <div class="tech-row"><div class="tech-badge">Email</div><div class="tech-name">Mailchimp or ConvertKit</div><div class="tech-desc">For follow-up sequences, resource delivery, and re-engagement campaigns.</div></div>
+</div>
+
+<!-- SECTION: TIMELINE -->
+<div class="section" id="timeline">
+  <div class="section-label">08 — Delivery</div>
+  <h2>Build Timeline (3–4 Weeks)</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-week">Week 1</div>
+      <div class="timeline-content">
+        <h5>Foundation</h5>
+        <p>Choose platform (Webflow/Squarespace), select template, define brand colors, finalize copy for landing page hero and problem block. Collect Jennifer's headshots and credentials.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 2</div>
+      <div class="timeline-content">
+        <h5>Build Core Pages</h5>
+        <p>Home, About, Services, Book pages built and styled. Booking system integrated (SimplePractice or Calendly). Zapier automations set up for confirmation + CRM.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 3</div>
+      <div class="timeline-content">
+        <h5>AI Chatbot + Testimonials</h5>
+        <p>Chatbot knowledge base written and deployed (Tidio fast, custom API for premium). Testimonials collected and placed. Contact page live.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Week 4</div>
+      <div class="timeline-content">
+        <h5>QA, SEO, Launch</h5>
+        <p>Mobile QA, speed optimization, Google Business Profile updated, Psychology Today profile linked. Soft launch → gather first bookings → iterate.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Post-Launch (Month 2+)</h3>
+  <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Blog / SEO</strong> <span>— 2 articles/month targeting local search terms like "anxiety therapist Orange County."</span></div></div>
+  <div class="principle"><div class="principle-dot"></div><div class="principle-text"><strong>Google Ads</strong> <span>— small budget ($300–500/mo) on high-intent keywords to fill her calendar faster.</span></div></div>
+  <div class="principle"><div class="principle-dot accent"></div><div class="principle-text"><strong>A/B test CTAs</strong> <span>— test "Book a Free Call" vs "Check Availability" after 100+ visitors. Data wins.</span></div></div>
+</div>
+
+<div class="spec-footer">
+  Jennifer Rankin Therapy — Website Spec v1.0 · Built by Kinshuk · Confidential
+</div>
+
+<script>
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+  chevron.style.transform = isOpen ? '' : 'rotate(90deg)';
+}
+</script>
+</body>
+</html>
