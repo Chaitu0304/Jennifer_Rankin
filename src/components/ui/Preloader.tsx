@@ -21,8 +21,7 @@ export const Preloader = () => {
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0, 
-            y: "-100%",
-            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } 
+            transition: { duration: 1.2, ease: "easeInOut" } 
           }}
         >
           <motion.div
